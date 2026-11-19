@@ -1,0 +1,46 @@
+name: advent
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - mpich
+  - petsc=*=real_*
+  # library block
+  - numpy=2.5.5
+  - scipy=1.18.1
+  - shapely=2.2.0
+  - python-gmsh=4.15.2
+  - gmsh=4.15.2
+  - matplotlib=3.11.2
+  - pillow=13.0.0
+  - pyvista=0.49.2
+  - trame-pyvista=0.3.6
+  - ffmpeg=8.1.2
+  # script block
+  - tyro=1.0.17
+  # advent block
+  - fenics-dolfinx=0.11.0
+  - dolfinx_mpc=0.11.0
+  - petsc4py=3.25.6
+  - jax=0.10.2
+  - jaxlib=0.10.2
+  - lineax=0.1.0
+  # imported by gridlod, which declares no dependencies; 0.5 has no `analyze`, which it needs
+  - scikit-sparse=0.4.16
+  # tooling dependencies, as in tools/pyproject.toml
+  - jinja2=3.1.6
+  - markdown-it-py=4.3.0
+  - markupsafe=3.0.4
+  - mdit-py-plugins=0.7.0
+  - pyyaml=6.0.3
+  # dev tools
+  - pytest=9.2.0
+  - pytest-xdist=3.8.0
+  - ruff=0.17.5
+  - pyright=1.1.414
+  - pip-tools=7.7.0
+  - pip
+  - pip:
+      - bempp-cl
+      - fmm3dpy==2.1.0
+      - gridlod @ git+https://github.com/fredrikhellman/gridlod@0ed4c096df75040145978d48c5307ef5678efed3

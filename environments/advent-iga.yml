@@ -1,0 +1,41 @@
+name: advent-iga
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - mpich
+  - petsc=*=real_*
+  # Library block, as in every env, so that `import advent` works here.
+  - numpy=2.5.5
+  - scipy=1.18.1
+  - shapely=2.2.0
+  - python-gmsh=4.15.2
+  - gmsh=4.15.2
+  - matplotlib=3.11.2
+  - pillow=13.0.0
+  - pyvista=0.49.2
+  - trame-pyvista=0.3.6
+  - ffmpeg=8.1.2
+  # Script block, as in every env: every day and smoke script parses its parameters with tyro.
+  - tyro=1.0.17
+  # FEniCSx 0.10 stack, the series tIGArx 0.2.0 requires; it cannot share the `advent` env (0.11).
+  - fenics-dolfinx=0.10.0
+  - fenics-basix=0.10.0
+  - fenics-ffcx=0.10.0
+  - fenics-ufl=2025.2.0
+  - mpi4py
+  - petsc4py=3.25.6
+  # tIGArx: numba for its assembly kernels, gfortran for igakit's Fortran extension. igakit
+  # builds with meson-python in an isolated build: pip fetches its build requirements from
+  # PyPI (meson-python, numpy, and ninja where none is on the PATH), so the lock does not
+  # hold them. The C compiler comes with dolfinx, so no compiler, meson or ninja is listed.
+  - numba
+  - gfortran
+  - pip
+  - pip:
+      # igakit has no tags: master on 17 Nov 2026. tIGArx's own environment.yml takes the
+      # moving master archive; this is that archive at a commit, with its hash.
+      - igakit @ https://github.com/dalcinl/igakit/archive/2a0c9ee8f529b1bff86567adf2750bc86b0a9dcf.zip#sha256=363c2e99ecfb4ec58f03a81835fd2eafb6795aa7150481942a9e44c655832b73
+      # tIGArx v0.2.0. tIGArx declares its dependencies (scipy, numba, pyvista) and the conda
+      # block holds them, so create.sh's lock install adds it without them.
+      - tIGArx @ git+https://github.com/pantolin/tIGArx@1343586df60e4958616a2390a3c2f96303d0d03d

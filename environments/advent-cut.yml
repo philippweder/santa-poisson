@@ -1,0 +1,37 @@
+name: advent-cut
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - mpich
+  - petsc=*=real_*
+  # Library block, as in every env, so that `import advent` works here.
+  - numpy=2.5.5
+  - scipy=1.18.1
+  - shapely=2.2.0
+  - python-gmsh=4.15.2
+  - gmsh=4.15.2
+  - matplotlib=3.11.2
+  - pillow=13.0.0
+  - pyvista=0.49.2
+  - trame-pyvista=0.3.6
+  - ffmpeg=8.1.2
+  # Script block, as in every env: every day and smoke script parses its parameters with tyro.
+  - tyro=1.0.17
+  # FEniCSx 0.11 stack from conda-forge, in place of the source build of it in the CutFEMx
+  # README; build.sh then builds runintgen, CutCells and CutFEMx.
+  - fenics-dolfinx=0.11.0
+  - fenics-basix=0.11.0
+  - fenics-ffcx=0.11.0
+  - fenics-ufl=2026.1.0
+  - mpi4py
+  - petsc4py=3.25.6
+  # Build tools for environments/cutfemx/build.sh: runintgen, CutCells and CutFEMx.
+  - compilers
+  - cmake
+  - ninja
+  - pkg-config
+  - pip
+  - nanobind
+  - scikit-build-core
+  - cffi

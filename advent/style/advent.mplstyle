@@ -1,0 +1,17 @@
+# Style of the advent calendar figures. A colour is a quoted hex string, because
+# "#" starts a comment; in axes.prop_cycle it is quoted without the "#".
+font.family: DejaVu Sans
+mathtext.fontset: dejavusans
+font.size: 11
+figure.facecolor: "#F7F9FC"
+axes.facecolor: "#F7F9FC"
+text.color: "#14213D"
+axes.labelcolor: "#14213D"
+axes.edgecolor: "#14213D"
+xtick.color: "#14213D"
+ytick.color: "#14213D"
+axes.prop_cycle: cycler('color', ['14213D', 'A4243B', '1E6B45', 'E0A526'])
+image.cmap: advent-warm
+axes.spines.top: False
+axes.spines.right: False
+savefig.dpi: 200
